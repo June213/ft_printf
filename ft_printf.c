@@ -6,13 +6,14 @@
 /*   By: jsalaber <jsalaber@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:09:04 by jsalaber          #+#    #+#             */
-/*   Updated: 2024/01/10 14:07:56 by jsalaber         ###   ########.fr       */
+/*   Updated: 2024/01/11 14:20:16 by jsalaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-// falta la x y la p
+// falta la p
 static int	ft_check(va_list vargs, char str)
 {
 	int	count;
@@ -28,6 +29,12 @@ static int	ft_check(va_list vargs, char str)
 		count = ft_printnbr(va_arg(vargs, int));
 	else if (str == 'u')
 		count = ft_printunsinbr(va_arg(vargs, unsigned int));
+	else if (str == 'x' || str == 'X')
+		count = ft_printhex(va_arg(vargs, unsigned int), str);
+	else if (str == 'p')
+		count = ft_printptr(va_arg(vargs, unsigned long int));
+	else
+		count = ft_printchar(str);
 	return (count);
 }
 
@@ -60,10 +67,10 @@ int	ft_printf(char const *str, ...)
 // int	main(void)
 // {
 // 	int				num = -9;
+// 	unsigned int	i = 5;
 // 	char			s = 'c';
 // 	char			*str = "Hola";
-// 	unsigned int	i = 5;
-	
-// 	ft_printf("string%%: %d %u %c %s que tal", num, i, s, str);
+// 	unsigned int	hx = 16;
+// 	ft_printf("string%%: %d %u %c %s %x %X %p\n", num, i, s, str, hx, hx, "");
 // 	return (0);
 // }
