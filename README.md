@@ -9,7 +9,6 @@ Este proyecto replica la funcionalidad de la función estándar `printf`, permit
 - Números enteros
 - Hexadecimales
 - Punteros
-- Caracteres
 
 ## Verificación
 
